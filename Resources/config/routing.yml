@@ -1,0 +1,3 @@
+api_home:
+  path: /
+  defaults: { _controller: 'api_event_handler:__invoke' }

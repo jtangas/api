@@ -1,0 +1,8 @@
+services:
+  api_event_handler:
+    class: Jt\Api\Event\Request
+
+  api_event_param_converter:
+    class: Jt\Api\Request\RequestParamConverter
+    tags:
+      - { name: request.param_converter, priority: 10, converter: api_event_request_command }
