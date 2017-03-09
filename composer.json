@@ -1,0 +1,12 @@
+{
+    "name": "jt/api",
+    "description": "API Core Bundle",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Justin Tangas",
+            "email": "jtangas@gmail.com"
+        }
+    ],
+    "require": {}
+}
