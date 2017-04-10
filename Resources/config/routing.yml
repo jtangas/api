@@ -1,3 +1,20 @@
 api_home:
   path: /
   defaults: { _controller: 'api_event_handler:__invoke' }
+
+api_generic:
+  path: /{entity}/
+  defaults:
+    _controller: 'api_event_handler:__invoke'
+  methods: [GET]
+
+api_generic_post:
+  path: /{entity}/
+  defaults:
+    _controller: 'api_event_handler:__invoke'
+    handler: api_event_handler.post
+  methods: [POST]
+
+api_generic_single:
+  path: /{entity}/{id}/
+  defaults: { _controller: 'api_event_handler:__invoke' }

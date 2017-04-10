@@ -16,6 +16,6 @@ class Request implements RequestInterface
 {
     public function __invoke(ApiEvent $apiEvent)
     {
-        return new JsonResponse($apiEvent);
+        return $apiEvent->getResponse();
     }
 }

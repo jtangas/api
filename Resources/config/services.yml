@@ -1,8 +1,42 @@
 services:
+  kernel.event_listener.json_request_transformer:
+    class: Jt\Api\Request\JsonRequestTransformerListener
+    tags:
+      - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest, priority: 100 }
+
   api_event_handler:
     class: Jt\Api\Event\Request
 
+  api_event_handler.post:
+    class: Jt\Api\Request\Handlers\Post
+    tags:
+      - { name: api_event.action }
+
+  api_event_handler.get:
+    class: Jt\Api\Request\Handlers\Get
+    tags:
+      - { name: api_event.action }
+
+  api_event_handler.patch:
+    class: Jt\Api\Request\Handlers\Patch
+    tags:
+      - { name: api_event.action }
+
+  api_event_handler.delete:
+    class: Jt\Api\Request\Handlers\Delete
+    tags:
+      - { name: api_event.action }
+
+  api_event_handler_registry:
+    class: Jt\Api\Request\Handlers\HandlerRegistry
+
+  api_event_services_registry:
+    class: Jt\Api\Request\Service\RequestServiceRegistry
+
   api_event_param_converter:
     class: Jt\Api\Request\RequestParamConverter
+    arguments:
+      - "@api_event_handler_registry"
+      - "@api_event_services_registry"
     tags:
       - { name: request.param_converter, priority: 10, converter: api_event_request_command }
